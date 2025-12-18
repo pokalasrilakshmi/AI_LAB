@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PyScript Demo</title>
+
+    <link rel="stylesheet" href="https://pyscript.net/releases/2025.8.1/core.css"/>
+    <script type="module" src="https://pyscript.net/releases/2025.8.1/core.js"></script>
+
+    <style>
+        .box {
+            border: 2px solid rgb(62, 27, 189);
+            padding: 10px;
+            margin: 10px;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Demonstration of Python coding in HTML</h1>
+
+<div class="box">
+    <div id="hello-box"></div>
+    <py-script>
+from pyscript import display
+display("hello", target="hello-box")
+    </py-script>
+</div>
+
+<div class="box">
+    <div id="num-box"></div>
+    <py-script>
+from pyscript import display
+for i in range(1, 20, 2):
+    display(i, target="num-box")
+    </py-script>
+</div>
+
+</body>
+</html>
