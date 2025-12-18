@@ -3,7 +3,7 @@ This is a simple example showing how **Python code can run inside an HTML page**
 
 ## What this demo does
 - Displays the text "hello" using Python
-- Prints numbers between 1 and 20 by incrementing by 2 using a Python loop
+- Prints numbers between 1 and 20 ,incrementing by 2 using a Python loop
 - Uses basic HTML and CSS for layout
 
 ## Technologies used
