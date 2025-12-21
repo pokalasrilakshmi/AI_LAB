@@ -35,3 +35,11 @@ The agent cleans all dirty rooms and exits successfully after the task is comple
 
 ## Conclusion
 This experiment demonstrates the working of a **Table-Driven Agent** and helps understand percept history and action selection in Artificial Intelligence.
+
+
+
+
+
+SCREENSHOT:
+
+<img width="1091" height="512" alt="image" src="https://github.com/user-attachments/assets/2da997df-3ca9-4858-9f5f-9c6ecf616a44" />
