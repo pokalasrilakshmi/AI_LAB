@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Table Driven Vacuum Agent</title>
+
+    <link rel="stylesheet" href="https://pyscript.net/releases/2025.8.1/core.css"/>
+    <script type="module" src="https://pyscript.net/releases/2025.8.1/core.js"></script>
+</head>
+<body>
+
+<h2>Table-Driven Vacuum Agent</h2>
+
+<py-script>
+from pyscript import display
+
+class VacuumEnvironment:
+    def __init__(self, rooms, start_location):
+        self.rooms = rooms
+        self.location = start_location
+
+    def percept(self):
+        return (self.location, self.rooms[self.location])
+
+    def execute(self, action):
+        if action == 'Suck':
+            self.rooms[self.location] = 'Clean'
+        elif action == 'Right':
+            self.location = 'B'
+        elif action == 'Left':
+            self.location = 'A'
+
+
+class TableDrivenAgent:
+    def __init__(self, table):
+        self.table = table
+        self.percept_sequence = []
+
+    def agent_function(self, percept):
+        self.percept_sequence.append(percept)
+
+        for i in range(len(self.percept_sequence)):
+            seq = tuple(self.percept_sequence[i:])
+            if seq in self.table:
+                return self.table[seq]
+        return None
+
+
+sequence_table = {
+    (('A', 'Dirty'),): 'Suck',
+    (('A', 'Clean'),): 'Right',
+    (('B', 'Dirty'),): 'Suck',
+    (('B', 'Clean'),): 'Left',
+    (('A', 'Clean'), ('B', 'Clean')): 'Exit'
+}
+
+rooms = {'A': 'Clean', 'B': 'Dirty'}
+env = VacuumEnvironment(rooms, 'A')
+agent = TableDrivenAgent(sequence_table)
+
+while True:
+    percept = env.percept()
+    action = agent.agent_function(percept)
+
+    display(f"Percept: {percept} → Action: {action}")
+
+    if action == 'Exit':
+        display("All rooms clean. Agent exits.")
+        break
+
+    env.execute(action)
+</py-script>
+
+</body>
+</html>
